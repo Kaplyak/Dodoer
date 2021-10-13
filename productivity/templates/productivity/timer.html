@@ -1,0 +1,8 @@
+{% extends "productivity/layout.html" %}
+
+{% block body %}
+    <h2>This is the timer!</h2>
+    <button id="start-timer" onclick="timer('start_timer')">Start timer</button>
+    <button id="stop-timer" onclick="timer('stop_timer')">Stop timer</button>
+    <h3><span id="minutes">01</span>:<span id="seconds">00</span></h3>
+{% endblock %}
