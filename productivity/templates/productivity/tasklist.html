@@ -1,0 +1,61 @@
+{% extends "productivity/layout.html" %}
+
+{% block body %}
+    <h2>This is the kanban board!</h2>
+    <div class="drag-container">
+        <ul class="drag-list">
+            <li class="drag-column drag-column-on-hold">
+                <span class="drag-column-header">
+                    <h2>Ideas</h2>
+                </span>
+                <div class="drag-options" id="options1"></div>
+                <ul class="drag-inner-list" id="1">
+                    <li class="drag-item"></li>
+                    <li class="drag-item"></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="drag-container">
+        <ul class="drag-list">
+            <li class="drag-column drag-column-on-hold">
+                <span class="drag-column-header">
+                    <h2>To do</h2>
+                </span>
+                <div class="drag-options" id="options1"></div>
+                <ul class="drag-inner-list" id="1">
+                    <li class="drag-item"></li>
+                    <li class="drag-item"></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="drag-container">
+        <ul class="drag-list">
+            <li class="drag-column drag-column-on-hold">
+                <span class="drag-column-header">
+                    <h2>Doing</h2>
+                </span>
+                <div class="drag-options" id="options1"></div>
+                <ul class="drag-inner-list" id="1">
+                    <li class="drag-item"></li>
+                    <li class="drag-item"></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="drag-container">
+        <ul class="drag-list">
+            <li class="drag-column drag-column-on-hold">
+                <span class="drag-column-header">
+                    <h2>Done</h2>
+                </span>
+                <div class="drag-options" id="options1"></div>
+                <ul class="drag-inner-list" id="1">
+                    <li class="drag-item"></li>
+                    <li class="drag-item"></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

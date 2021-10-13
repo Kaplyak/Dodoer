@@ -12,5 +12,6 @@ urlpatterns = [
     path("logout", views.logout_view, name="logout"),
 
     path("timer", views.timer, name="timer"),
+    path("tasklist", views.tasklist, name="tasklist"),
     path("profile", views.profile, name="profile")
 ]

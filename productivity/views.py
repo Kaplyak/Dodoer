@@ -66,3 +66,6 @@ def profile(request):
 
 def timer(request):
     return render(request, "productivity/timer.html")
+
+def tasklist(request):
+    return render(request, "productivity/tasklist.html")
