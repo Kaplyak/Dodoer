@@ -69,3 +69,6 @@ def timer(request):
 
 def tasklist(request):
     return render(request, "productivity/tasklist.html")
+
+def faq(request):
+    return render(request, "productivity/faq.html")
