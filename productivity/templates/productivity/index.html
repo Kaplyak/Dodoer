@@ -1,5 +1,92 @@
 {% extends "productivity/layout.html" %}
+{% load static %}
 
 {% block body %}
-    <h1>This is index.html</h1>
+    <!-- Head section -->
+    <section class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+        <div class="container">
+            <div class="d-sm-flex justify-content-between">
+                <div class="text-center">
+                    <h1>Simple. Efficient. <span class="dodoer-text">Dodoer.</span></h1>
+                    <p class="lead my-4">Become more productive than ever with Dodoer.</br>Accomplish it all.</p>
+                    <a href="{% url 'register' %}">
+                        <button class="btn btn-lg dodoer-background dodoer-btn">Sign up</button>
+                    </a>
+                </div>
+                <img class="img-fluid w-50 d-none d-sm-block" src="{% static 'productivity/img/undraw_growth.svg' %}" alt="" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Sign up section -->
+    <section class="dodoer-background text-light p-5">
+        <div class="container">
+            <div class="d-md-flex justify-content-between align-items-center">
+                <h3 class="mb-3 mb-md-0">Sign up, it's free!</h3>
+                <div class="input-group mail-input">
+                    <input type="text" class="form-control" placeholder="Enter Email">
+                    <button class="btn btn-dark btn-lg" type="button">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kanban board section -->
+    <section id="learn" class="p-5 my-5">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md">
+                    <img src="{% static 'productivity/img/undraw_kanban.svg' %}" class="img-fluid" alt="">
+                </div>
+                <div class="col-md p-5">
+                    <h2>Kanban board</h2>
+                    <p class="lead">Keep your tasks organized in an efficient way with the most popular scrum board out there!</p>
+                    <p>With Dodoer's kanban board you can keep your tasks organized in 4 different categories: ideas, to do, doing, and done. Focus on what's important right now and keep every thought noted.</p>
+                    <a href="{% url 'tasklist' %}">
+                        <button class="btn dodoer-background dodoer-btn mt-3"><i class="bi bi-arrow-up-right"></i> Go to board</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pomodoro timer section -->
+    <section id="pomodoro" class="bg-dark text-light p-5 my-5">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md p-5">
+                    <h2>Pomodoro timer</h2>
+                    <p class="lead">Stay focused and work distraction-free with the famous work-rest cycles technique!</p>
+                    <p>Supercharge your routine with a pomodoro timer! Doing tasks in short bursts followed by some minutes of rest is a proven way of being more productive, and a pomodoro timer is one of the best methods for that.</p>
+                    <a href="{% url 'timer' %}">
+                        <button class="btn dodoer-background dodoer-btn mt-3"><i class="bi bi-arrow-up-right"></i> Timer</button>
+                    </a>
+                </div>
+                <div class="col-md">
+                    <img src="{% static 'productivity/img/undraw_pomodoro.svg' %}" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+
+    </section>
+    
+    <!-- FAQ section -->
+    <section id="learn" class="p-5 my-5">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md">
+                    <img src="{% static 'productivity/img/undraw_faq1.svg' %}" class="img-fluid" alt="">
+                </div>
+                <div class="col-md p-5">
+                    <h2>F.A.Q.</h2>
+                    <p class="lead">Questions? We got answers!</p>
+                    <p>Head over to our Frequently Asked Questions page to learn more about Dodoer, what is scrum, what is a kanban board, what is a pomodoro timer, and much more.</p>
+                    <a href="{% url 'faq' %}">
+                        <button class="btn dodoer-background dodoer-btn mt-3"><i class="bi bi-arrow-up-right"></i> To the FAQ!</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 {% endblock %}

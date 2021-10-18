@@ -1,12 +1,12 @@
 {% extends "productivity/layout.html" %}
 
 {% block body %}
-    <div class="container mb-5">
-        <h1 class="text-center mt-4 mb-4">Frequently Asked Questions</h1>
+    <div class="container mb-5 my-sm-5 pt-sm-5">
+        <h1 class="text-center mt-4 mb-4 pb-sm-4">Frequently Asked Questions</h1>
         <div class="accordion" id="faq">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <button class="accordion-button dodoer-accordion" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         What is Dodoer?
                     </button>
                 </h2>
@@ -18,47 +18,47 @@
             </div>
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <button class="accordion-button collapsed dodoer-accordion" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         What is Scrum? And Agile?
                     </button>
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faq">
                     <div class="accordion-body">
-                        <p><strong>Agile</strong>, at its core, is a set of <a href="https://agilemanifesto.org/">values</a> and <a href="https://agilemanifesto.org/principles.html">principles</a> on how software should be developed. It isn't a set of practices but a mindset for approaching software development. If a methodology is agile, it should be in line with these values and principles.</p>
+                        <p><strong>Agile</strong>, at its core, is a set of <a href="https://agilemanifesto.org/" class="dodoer-link">values</a> and <a href="https://agilemanifesto.org/principles.html" class="dodoer-link">principles</a> on how software should be developed. It isn't a set of practices but a mindset for approaching software development. If a methodology is agile, it should be in line with these values and principles.</p>
                         <p><strong>Scrumis a set of practices that support the agile mindset</strong>. Scrum breaks work into small chunks called "sprints" where software is developed for just a few weeks and handed over to the client for review and potentially inspiring changes for the future of the project. It breaks features into stories about how a person would use the feature - with the idea that if you can't explain who is going to use a feature you shouldn't build it. It asks people to compare the size of work for features instead of estimating time with the expectation that people are better at comparing than estimating. It also defines a number of roles and meetings to make sure there is a continuous feedback cycle to the entire team.</p>
-                        <p><a href="https://en.wikipedia.org/wiki/Scrum_(software_development)">Wikipedia's Scrum article</a> has a lot more information about the roles and meetings that should be happening in Official Scrum. Many teams adopt Scrum as a starting point and adapt the process to meet their needs, so it may not mirror what's happening on any given Scrum team.</p>
+                        <p><a href="https://en.wikipedia.org/wiki/Scrum_(software_development)" class="dodoer-link">Wikipedia's Scrum article</a> has a lot more information about the roles and meetings that should be happening in Official Scrum. Many teams adopt Scrum as a starting point and adapt the process to meet their needs, so it may not mirror what's happening on any given Scrum team.</p>
                     </div>
                 </div>
             </div>
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <button class="accordion-button collapsed dodoer-accordion" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         What is a kanban board?
                     </button>
                 </h2>
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faq">
                     <div class="accordion-body">
-                        <p>A Kanban board is one of the tools that can be used to implement <a href="https://en.wikipedia.org/wiki/Kanban_(development)">Kanban</a> to manage work at a personal or organizational level. Kanban boards visually depict work at various stages of a process using cards to represent work items and columns to represent each stage of the process. Cards are moved from left to right to show progress and to help coordinate teams performing the work. A Kanban board may be divided into horizontal "swimlanes" representing different kinds of work or different teams performing the work.</p>
-                        <p>Check out <a href="https://en.wikipedia.org/wiki/Kanban_board">Wikipedia: Kanban Board</a>for more information.</p>
+                        <p>A Kanban board is one of the tools that can be used to implement <a href="https://en.wikipedia.org/wiki/Kanban_(development)" class="dodoer-link">Kanban</a> to manage work at a personal or organizational level. Kanban boards visually depict work at various stages of a process using cards to represent work items and columns to represent each stage of the process. Cards are moved from left to right to show progress and to help coordinate teams performing the work. A Kanban board may be divided into horizontal "swimlanes" representing different kinds of work or different teams performing the work.</p>
+                        <p>Check out <a href="https://en.wikipedia.org/wiki/Kanban_board" class="dodoer-link">Wikipedia: Kanban Board</a> for more information.</p>
                     </div>
                 </div>
             </div>
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingFour">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <button class="accordion-button collapsed dodoer-accordion" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                         What is a pomodoro timer?
                     </button>
                 </h2>
                 <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faq">
                     <div class="accordion-body">
                         <p><strong>The Pomodoro Technique is a time management method</strong> developed by Francesco Cirillo in the late 1980s. It uses a timer to break work into intervals, traditionally 25 minutes in length, separated by short breaks. Each interval is known as a pomodoro, from the Italian word for 'tomato', after the tomato-shaped kitchen timer Cirillo used as a university student. The technique has been widely popularized by dozens of apps and websites providing timers and instructions. Closely related to concepts such as timeboxing and iterative and incremental development used in software design, the method has been adopted in pair programming contexts.</p>
-                        <p>You can learn more about it on <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Wikipedia: Pomodoro Technique</a>.</p>
+                        <p>You can learn more about it on <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" class="dodoer-link">Wikipedia: Pomodoro Technique</a>.</p>
                     </div>
                 </div>
             </div>
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingFive">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    <button class="accordion-button collapsed dodoer-accordion" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                         Why a dodo as logo?
                     </button>
                 </h2>
@@ -70,14 +70,14 @@
             </div>
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingSix">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                    <button class="accordion-button collapsed dodoer-accordion" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                         Where can I find the dev that made this cool site?
                     </button>
                 </h2>
                 <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faq">
                     <div class="accordion-body">
-                        <p>You can find me on <a href="#">LinkedIn</a> <a href="https://github.com/Kaplyak">Github: Kaplyak.</a> and on <a href="https://twitter.com/kaplyakapel">Twitter: @kaplyakapel</a>.</p>
-                        <p>You can also email me: <a href="mailto:kaplyak@protonmail.com"></a>kaplyak@protonmail.com</p>
+                        <p>You can find me on <a href="#" class="dodoer-link">LinkedIn</a>, <a href="https://github.com/Kaplyak" class="dodoer-link">Github: Kaplyak</a>. and on <a href="https://twitter.com/kaplyakapel" class="dodoer-link">Twitter: @kaplyakapel</a>.</p>
+                        <p>You can also email me: <a href="mailto:kaplyak@protonmail.com" class="dodoer-link"></a>kaplyak@protonmail.com</p>
                     </div>
                 </div>
             </div>

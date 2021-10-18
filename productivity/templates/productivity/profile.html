@@ -1,0 +1,30 @@
+{% extends "productivity/layout.html" %}
+
+{% block body %}
+    <div class="dodoer-background">
+        <section class="bg-dark text-light p-5 p-lg-0 py-lg-5 text-center text-sm-start">
+            <div class="container">
+                <div class="d-sm-flex justify-content-between">
+                    <div class="text-center">
+                        <h1>Username.</h1>
+                        <p>Profile picture.</p>
+                        <p>Quote.</p>
+                        <a href="{% url 'register' %}">
+                            <button class="btn btn-lg dodoer-background dodoer-btn">Sign up</button>
+                        </a>
+                    </div>
+                    <p>Here goes a pie chart.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sign up section -->
+        <section class="dodoer-background text-light p-5">
+            <div class="container">
+                <div class="d-md-flex justify-content-between align-items-center">
+                    <p>Here goes the full tasklist.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

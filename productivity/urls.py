@@ -14,5 +14,15 @@ urlpatterns = [
     path("timer", views.timer, name="timer"),
     path("tasklist", views.tasklist, name="tasklist"),
     path("profile", views.profile, name="profile"),
-    path("faq", views.faq, name="faq")
+    path("faq", views.faq, name="faq"),
+
+    # API routes
+    # Timer
+    path("<str:user>/updatetime", views.updatetime, name="updatetime"),
+
+
+    # Tasks
+    path("tasks", views.tasks, name="tasks"),
+    path("<str:user>/addtask", views.addtask, name="addtask"),
+    path("<str:user>/removetask", views.removetask, name="removetask")
 ]

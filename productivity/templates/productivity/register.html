@@ -1,28 +1,41 @@
 {% extends "productivity/layout.html" %}
+{% load static %}
 
 {% block body %}
-    <h2>Register</h2>
-
     {% if message %}
         <div>{{ message }}</div>
     {% endif %}
 
-    <form action="{% url 'register' %}" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+    <div class="d-flex align-items-center">
+        <div class="log-container">
+            <div class="text-center py-4">
+                <a href="{% url 'index' %}" class="navbar-brand">
+                    <img src="{% static 'productivity/img/dodoer-logo.svg' %}" alt="" width="240" height="80">
+                </a>
+            </div>
+            <div class="outerform my-3">
+                <div class="formwhitespace p-5">
+                    <form action="{% url 'register' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group pb-3">
+                            <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+                        </div>
+                        <div class="form-group pb-3">
+                            <input class="form-control" type="email" name="email" placeholder="Email Address">
+                        </div>
+                        <div class="form-group pb-3">
+                            <input class="form-control" type="password" name="password" placeholder="Password">
+                        </div>
+                        <div class="form-group pb-3">
+                            <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+                        </div>
+                        <div class="text-center my-3">
+                            <input class="btn dodoer-background dodoer-btn" type="submit" value="Sign up">
+                        </div>
+                    </form>
+                    <p class="text-center small">Don't have an account? <a href="{% url 'register' %}" class="log-link">Register here.</a></p>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <input class="form-control" type="email" name="email" placeholder="Email Address">
-        </div>
-        <div class="form-group">
-            <input class="form-control" type="password" name="password" placeholder="Password">
-        </div>
-        <div class="form-group">
-            <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
-        </div>
-        <input class="btn btn-primary" type="submit" value="Register">
-    </form>
-
-Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+    </div>
 {% endblock %}

@@ -62,7 +62,7 @@ def register(request):
         return render(request, "productivity/register.html")
 
 def profile(request):
-    return Hello
+    return render(request, "productivity/profile.html")
 
 def timer(request):
     return render(request, "productivity/timer.html")
@@ -72,3 +72,15 @@ def tasklist(request):
 
 def faq(request):
     return render(request, "productivity/faq.html")
+
+def tasks(request):
+    return Hello
+
+def addtask(request):
+    return Hello
+
+def removetask(request):
+    return Hello
+
+def updatetime(request, username):
+    user_id = User.objects.get(username=username)

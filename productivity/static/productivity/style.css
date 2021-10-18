@@ -1,3 +1,101 @@
+body::before {
+    display: block;
+    content: '';
+    height: 120px;
+}
+
+body{
+    display:grid; 
+    grid-template-rows: auto 1fr auto;
+    min-height:100vh;
+}
+
+.dodoer-background {
+    background-color: #FCB76F;
+}
+
+.dodoer-text {
+    color: #FCB76F;
+}
+
+.dodoer-link {
+    color: #FCB76F !important;
+    text-decoration: none;
+}
+
+.dodoer-link:hover {
+    color: white;
+    text-shadow: 0 0 11px #FCB76F; 
+}
+
+.footer-link {
+    color: black;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: white;
+}
+
+.log-container {
+    margin: auto;
+    max-width: 540px;
+}
+
+.outerform {
+    margin: 0px auto;
+    width: 100%;
+    background: white;
+    border-radius: 4px;
+    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+}
+
+.log-link {
+    color: #FCB76F;
+    text-decoration: none;
+}
+
+.log-link:hover {
+    color: black;
+    text-shadow: 0 0 11px #FCB76F;
+}
+
+.dodoer-btn:hover {
+    background-color: white;
+    border: 1px solid #000;
+}
+
+#timer {
+    color: #FCB76F;
+    font-size: 100px;
+    text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+}
+
+#stop-timer {
+    display: none;
+}
+
+@media(min-width: 768px) {
+    .mail-input {
+        width: 50%;
+    }
+
+    #timer {
+        font-size: 200px;
+    }
+}
+
+
+.dodoer-accordion[aria-expanded="true"] {
+    background-color:#FCBF83 !important;
+    color:black !important;
+}
+
+/*
+Drag drop
+*/
+
+
 * {
     box-sizing: border-box;
 }
@@ -5,10 +103,6 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-}
-.drag-container {
-    max-width: 1000px;
-    margin: 20px auto;
 }
 .drag-list {
     display: flex;
@@ -37,17 +131,17 @@ ul {
     text-transform: uppercase;
     font-weight: 600;
 }
-.drag-column-on-hold .drag-column-header, .drag-column-on-hold .is-moved, .drag-column-on-hold .drag-options {
-    background: #fb7d44;
+.drag-column-ideas .drag-column-header, .drag-column-ideas .is-moved, .drag-column-ideas .drag-options {
+    background: #fcb76f;
 }
-.drag-column-in-progress .drag-column-header, .drag-column-in-progress .is-moved, .drag-column-in-progress .drag-options {
-    background: #2a92bf;
+.drag-column-todo .drag-column-header, .drag-column-todo .is-moved, .drag-column-todo .drag-options {
+    background: #fcb76f;
 }
-.drag-column-needs-review .drag-column-header, .drag-column-needs-review .is-moved, .drag-column-needs-review .drag-options {
-    background: #f4ce46;
+.drag-column-doing .drag-column-header, .drag-column-doing .is-moved, .drag-column-doing .drag-options {
+    background: #fcb76f;
 }
-.drag-column-approved .drag-column-header, .drag-column-approved .is-moved, .drag-column-approved .drag-options {
-    background: #00b961;
+.drag-column-done .drag-column-header, .drag-column-done .is-moved, .drag-column-done .drag-options {
+    background: #fcb76f;
 }
 .drag-column-header {
     display: flex;

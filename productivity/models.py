@@ -6,14 +6,15 @@ from django.db import models
 class User(AbstractUser):
     pass
 
-
 class Task(models.Model):
     # Fields: user, title, description, timestamp, color?
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=2048)
+    title = models.CharField(max_length=1024)
     description = models.TextField()
-    timestamp = models.DateTimeField(auto_now_add=True)
-    color = models.CharField(max_length=128)
 
-#class Profile(models.Model):
-    # Fields: focus_time, ???
+class Profile(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    profile_picture = models.ImageField()
+    quote = models.CharField(max_length=2048)
+    productive_time = models.IntegerField()
+    break_time = models.IntegerField()

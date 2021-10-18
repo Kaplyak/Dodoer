@@ -1,10 +1,10 @@
 {% extends "productivity/layout.html" %}
 
 {% block body %}
-    <h2>This is the kanban board!</h2>
-    <div class="drag-container">
-        <ul class="drag-list">
-            <li class="drag-column drag-column-on-hold">
+    <div class="container my-4">
+        <h1 id="kanban">This is the kanban board!</h2>
+        <ul class="drag-list mt-5">
+            <li class="drag-column drag-column-ideas">
                 <span class="drag-column-header">
                     <h2>Ideas</h2>
                 </span>
@@ -14,48 +14,85 @@
                     <li class="drag-item"></li>
                 </ul>
             </li>
-        </ul>
-    </div>
-    <div class="drag-container">
-        <ul class="drag-list">
-            <li class="drag-column drag-column-on-hold">
+            <li class="drag-column drag-column-todo">
                 <span class="drag-column-header">
                     <h2>To do</h2>
                 </span>
-                <div class="drag-options" id="options1"></div>
-                <ul class="drag-inner-list" id="1">
+                <div class="drag-options" id="options2"></div>
+                <ul class="drag-inner-list" id="2">
                     <li class="drag-item"></li>
                     <li class="drag-item"></li>
                 </ul>
             </li>
-        </ul>
-    </div>
-    <div class="drag-container">
-        <ul class="drag-list">
-            <li class="drag-column drag-column-on-hold">
+            <li class="drag-column drag-column-doing">
                 <span class="drag-column-header">
                     <h2>Doing</h2>
                 </span>
-                <div class="drag-options" id="options1"></div>
-                <ul class="drag-inner-list" id="1">
+                <div class="drag-options" id="options3"></div>
+                <ul class="drag-inner-list" id="3">
                     <li class="drag-item"></li>
                     <li class="drag-item"></li>
                 </ul>
             </li>
-        </ul>
-    </div>
-    <div class="drag-container">
-        <ul class="drag-list">
-            <li class="drag-column drag-column-on-hold">
+            <li class="drag-column drag-column-done">
                 <span class="drag-column-header">
                     <h2>Done</h2>
                 </span>
-                <div class="drag-options" id="options1"></div>
-                <ul class="drag-inner-list" id="1">
+                <div class="drag-options" id="options4"></div>
+                <ul class="drag-inner-list" id="4">
                     <li class="drag-item"></li>
                     <li class="drag-item"></li>
                 </ul>
             </li>
         </ul>
+        <div class="text-center mt-5">
+            <button class="btn dodoer-background dodoer-btn btn-lg mb-4" data-bs-toggle="modal" data-bs-target="#addTask">Add task</button>
+        </div>
+    </div>
+    
+
+    <!-- Modal -->
+    <div class="modal fade" id="addTask" tabindex="-1" aria-labelledby="addTaskLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addTaskLabel">Add task</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="lead">Fill out this form and we will get back to you.</p>
+                    <form>
+                        <div class="mb-3">
+                            <label for="title" class="col-form-label">
+                                Title:
+                            </label>
+                            <input type="text" class="form-control" id="title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="col-form-label" required>
+                                Description
+                            </label>
+                            <input type="text" class="form-control" id="description" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="due-date" class="col-form-label">
+                                Due date (optional):
+                            </label>
+                            <input type="text" class="form-control" id="due-date">
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="col-form-label">
+                                Phone:
+                            </label>
+                            <input type="text" class="form-control" id="phone">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn dodoer-btn dodoer-background">Add task</button>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

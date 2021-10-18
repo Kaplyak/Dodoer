@@ -1,8 +1,11 @@
 {% extends "productivity/layout.html" %}
 
 {% block body %}
-    <h2>This is the timer!</h2>
-    <button id="start-timer" onclick="timer('start_timer')">Start timer</button>
-    <button id="stop-timer" onclick="timer('stop_timer')">Stop timer</button>
-    <h3><span id="minutes">01</span>:<span id="seconds">00</span></h3>
+    <div class="d-flex align-items-center">
+        <div class="container text-center p-5">
+            <h1 id="timer-title" class="pb-3">Time to work!</h1>
+            <h3 id="timer"><span id="minutes">1</span>:<span id="seconds">00</span></h3>
+            <button id="start-timer" class="btn btn-lg dodoer-btn dodoer-background m-1" onclick="timer('start_timer')">Start timer</button><button id="stop-timer" class="btn btn-lg dodoer-btn dodoer-background m-1" onclick="timer('stop_timer')">Stop timer</button>
+        </div>
+    </div>
 {% endblock %}
