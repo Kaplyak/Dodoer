@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.3/dragula.min.css" media="all">
         <!-- Own files -->
         <link rel="stylesheet" href="{% static 'productivity/style.css' %}">
-        <script type="text/javascript" src="{% static 'productivity/scripts.js' %}"></script>
+        
         <title>Dodoer</title>
     </head>
     <body>
@@ -28,24 +28,32 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navmenu">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a href="{% url 'timer' %}" class="nav-link">Timer</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{% url 'tasklist' %}" class="nav-link">To-do list</a>
-                        </li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a href="{% url 'timer' %}" class="nav-link">Timer</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'tasklist' %}" class="nav-link">To-do list</a>
+                            </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a href="{% url 'faq' %}" class="nav-link">F.A.Q.</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{% url 'register' %}" class="nav-link dodoer-link">Sign up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{% url 'login' %}" class="nav-link dodoer-link">Log in</a>
-                        </li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a id="username" href="{% url 'profile' %}" class="nav-link dodoer-link">{{ username }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'logout' %}" class="nav-link dodoer-link">Log out</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a href="{% url 'register' %}" class="nav-link dodoer-link">Sign up</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'login' %}" class="nav-link dodoer-link">Log in</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>    
@@ -72,6 +80,12 @@
                 </a>
             </div>
         </footer>
+        <!-- Chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+        <!-- Own js -->
+        <script type="text/javascript" src="{% static 'productivity/scripts.js' %}"></script>
+        <!-- Dragula js-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.3/dragula.min.js"></script>
     </body>
 </html>

@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 from . import views
 
@@ -18,11 +20,13 @@ urlpatterns = [
 
     # API routes
     # Timer
-    path("<str:user>/updatetime", views.updatetime, name="updatetime"),
+    path("<str:username>/updatetime", views.updatetime, name="updatetime"),
 
 
     # Tasks
     path("tasks", views.tasks, name="tasks"),
-    path("<str:user>/addtask", views.addtask, name="addtask"),
-    path("<str:user>/removetask", views.removetask, name="removetask")
-]
+    path("<str:username>/addtask", views.addtask, name="addtask"),
+    path("<str:username>/removetask", views.removetask, name="removetask")
+    
+    # Url to load user-uploaded images.
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

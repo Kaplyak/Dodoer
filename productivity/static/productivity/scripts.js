@@ -1,107 +1,154 @@
-let interval_id = null;
-let cycle = "productive";
-let ellapsedTime = 0;
-
-function timer(action) {
-    if (action == "start_timer"){
-        document.querySelector("#start-timer").style.display = "none";
-        document.querySelector("#stop-timer").style.display = "inline";
-        interval_id = setInterval(decrease, 1000);
-
-        function decrease() {
-            let minutes = Number(document.querySelector('#minutes').innerHTML);
-            let seconds = Number(document.querySelector('#seconds').innerHTML);
-
-            if (seconds > 0) {
-                seconds -= 1;
-                ellapsedTime += 1;
-            }
-            else if (minutes == 0 && seconds == 0) {
-                // Put ellapsed time in database.
-
-
-                // 
-
-                ellapsedTime = 0;
-                clearInterval(interval_id);
-                
-                document.querySelector("#start-timer").style.display = "inline";
-                document.querySelector("#stop-timer").style.display = "none";
-
-                if (cycle == "productive") {
-                    document.querySelector("#timer-title").innerHTML = "Time for a quick break!"
-                    cycle = "break";
-                    minutes = 1;
-                    seconds = 0;
-                }
-                else {
-                    document.querySelector("#timer-title").innerHTML = "Let's work!"
-                    cycle = "productive";
-                    minutes = 2;
-                    seconds = 0;
-                }
-            }
-
-            else if (seconds == 0) {
-                seconds = 59;
-                minutes -= 1;
-                ellapsedTime += 1;
-            }
-
-            // Place string from values into the innerHTML of minutes and seconds. For single digit numbers, add a 0 to their left.
-            document.querySelector('#minutes').innerHTML = minutes.toString().padStart(2, "0");
-            document.querySelector('#seconds').innerHTML = seconds.toString().padStart(2, "0");
-        }
-    }
-    
-    else if (action == "stop_timer") {
-        document.querySelector("#start-timer").style.display = "inline";
-        document.querySelector("#stop-timer").style.display = "none";
-        // Put ellapsed time in database.
-
-
-
-        ellapsedTime = 0;
-        clearInterval(interval_id);
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Function add task
 function addTask(taskTitle, taskDescription) {
 
 }
 
-// Drag and drop
+
 document.addEventListener('DOMContentLoaded', function() {
-    if (window.location.pathname == '/tasklist') {
+    // Profile
+    if (window.location.pathname == '/profile') {
+        let obj;
+
+        fetch('/' + username + '/updatetime')
+        .then(response => response.json())
+        .then(data => obj = data)
+        .then(obj => {
+            let productive_time = obj.productive_time / 60;
+            let break_time = obj.break_time / 60;
+
+            const data = {
+            labels: ['Productive time', 'Break time'],
+            datasets: [
+                {
+                    label: 'Productivity dataset',
+                    data: [productive_time, break_time],
+                    backgroundColor: ['#BDE7FB', '#CFE39D'],
+                    borderColor: 'rgba(255, 0, 0, 0)',
+                    color: 'white',
+                }
+            ]
+            };
+        
+            const config = {
+                type: 'doughnut',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                font: {
+                                    size: 14,
+                                    family: 'montserrat'
+                                },
+                                color: 'white'
+                            }
+                        }
+                    }
+                },
+            };
+        
+            let productivity_chart = new Chart(
+                document.getElementById('productivity_chart'),
+                config
+            );
+        }) 
+    }
+
+
+    // Timer
+    else if (window.location.pathname == '/timer') {
+        let interval_id = null;
+        let cycle = "productive";
+        let ellapsedTime = 0;
+        const username = document.querySelector("#username").value
+        function timer(action) {
+            if (action == "start_timer"){
+                document.querySelector("#start-timer").style.display = "none";
+                document.querySelector("#stop-timer").style.display = "inline";
+                interval_id = setInterval(decrease, 1000);
+        
+                function decrease() {
+                    let minutes = Number(document.querySelector('#minutes').innerHTML);
+                    let seconds = Number(document.querySelector('#seconds').innerHTML);
+        
+                    if (seconds > 0) {
+                        seconds -= 1;
+                        ellapsedTime += 1;
+                    }
+                    else if (minutes == 0 && seconds == 0) {
+                        // Put ellapsed time in database.
+                        if (cycle == "productive") {
+                            fetch('/' + username + '/updatetime', {
+                                method: 'PUT',
+                                body: JSON.stringify({
+                                    productive: true,
+                                    time: ellapsedTime
+                                })
+                            })
+                        }
+        
+                        else {
+                            fetch('/' + username + '/updatetime', {
+                                method: 'PUT',
+                                body: JSON.stringify({
+                                    productive: false,
+                                    time: ellapsedTime
+                                })
+                            })
+                        }
+        
+        
+                        // 
+        
+                        ellapsedTime = 0;
+                        clearInterval(interval_id);
+                        
+                        document.querySelector("#start-timer").style.display = "inline";
+                        document.querySelector("#stop-timer").style.display = "none";
+        
+                        if (cycle == "productive") {
+                            document.querySelector("#timer-title").innerHTML = "Time for a quick break!"
+                            cycle = "break";
+                            minutes = 5;
+                            seconds = 0;
+                        }
+                        else {
+                            document.querySelector("#timer-title").innerHTML = "Let's work!"
+                            cycle = "productive";
+                            minutes = 25;
+                            seconds = 0;
+                        }
+                    }
+        
+                    else if (seconds == 0) {
+                        seconds = 59;
+                        minutes -= 1;
+                        ellapsedTime += 1;
+                    }
+        
+                    // Place string from values into the innerHTML of minutes and seconds. For single digit numbers, add a 0 to their left.
+                    document.querySelector('#minutes').innerHTML = minutes.toString().padStart(2, "0");
+                    document.querySelector('#seconds').innerHTML = seconds.toString().padStart(2, "0");
+                }
+            }
+            
+            else if (action == "stop_timer") {
+                document.querySelector("#start-timer").style.display = "inline";
+                document.querySelector("#stop-timer").style.display = "none";
+                // Put ellapsed time in database.
+        
+        
+        
+                ellapsedTime = 0;
+                clearInterval(interval_id);
+            }
+        }
+    }
+
+
+    // Drag and drop
+    else if (window.location.pathname == '/tasklist') {
         dragula([
             document.getElementById('1'),
             document.getElementById('2'),

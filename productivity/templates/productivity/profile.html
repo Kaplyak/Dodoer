@@ -4,16 +4,21 @@
     <div class="dodoer-background">
         <section class="bg-dark text-light p-5 p-lg-0 py-lg-5 text-center text-sm-start">
             <div class="container">
-                <div class="d-sm-flex justify-content-between">
+                <div class="d-sm-flex justify-content-around">
                     <div class="text-center">
-                        <h1>Username.</h1>
-                        <p>Profile picture.</p>
-                        <p>Quote.</p>
+                        <h1>{{ profile.user }}</h1>
+                        <img src="{{ profile.profile_picture }}" alt="{{ profile.user }} profile picture"></img>
+                        <p>{{ profile.quote }}</p>
                         <a href="{% url 'register' %}">
-                            <button class="btn btn-lg dodoer-background dodoer-btn">Sign up</button>
+                            <button class="btn btn-lg dodoer-background dodoer-btn">Edit profile</button>
                         </a>
                     </div>
-                    <p>Here goes a pie chart.</p>
+                    <div>
+                        <canvas id="productivity_chart" width="350" height="350"></canvas>
+                        <hr>
+                        <p>Productive time: {{ productive_time}} minutes.</p>
+                        <p>Rest time: {{ break_time }} minutes.</p>
+                    </div>
                 </div>
             </div>
         </section>
