@@ -10,8 +10,16 @@
                 </span>
                 <div class="drag-options" id="options1"></div>
                 <ul class="drag-inner-list" id="1">
-                    <li class="drag-item"></li>
-                    <li class="drag-item"></li>
+                    {% for task in ideas_tasks %}
+                        <li class="drag-item">
+                            <div class="task-title">
+                                <p>{{ task.title }}</p>
+                            </div>
+                            <div class="task-description">
+                                <p>{{ task.description }}</p>
+                            </div>
+                        </li>
+                    {% endfor %}
                 </ul>
             </li>
             <li class="drag-column drag-column-todo">
@@ -20,8 +28,16 @@
                 </span>
                 <div class="drag-options" id="options2"></div>
                 <ul class="drag-inner-list" id="2">
-                    <li class="drag-item"></li>
-                    <li class="drag-item"></li>
+                    {% for task in todo_tasks %}
+                        <li class="drag-item">
+                            <div class="task-title">
+                                <p>{{ task.title }}</p>
+                            </div>
+                            <div class="task-description">
+                                <p>{{ task.description }}</p>
+                            </div>
+                        </li>
+                    {% endfor %}
                 </ul>
             </li>
             <li class="drag-column drag-column-doing">
@@ -30,8 +46,16 @@
                 </span>
                 <div class="drag-options" id="options3"></div>
                 <ul class="drag-inner-list" id="3">
-                    <li class="drag-item"></li>
-                    <li class="drag-item"></li>
+                    {% for task in doing_tasks %}
+                        <li class="drag-item">
+                            <div class="task-title">
+                                <p>{{ task.title }}</p>
+                            </div>
+                            <div class="task-description">
+                                <p>{{ task.description }}</p>
+                            </div>
+                        </li>
+                    {% endfor %}
                 </ul>
             </li>
             <li class="drag-column drag-column-done">
@@ -40,8 +64,16 @@
                 </span>
                 <div class="drag-options" id="options4"></div>
                 <ul class="drag-inner-list" id="4">
-                    <li class="drag-item"></li>
-                    <li class="drag-item"></li>
+                    {% for task in done_tasks %}
+                        <li class="drag-item">
+                            <div class="task-title">
+                                <p>{{ task.title }}</p>
+                            </div>
+                            <div class="task-description">
+                                <p>{{ task.description }}</p>
+                            </div>
+                        </li>
+                    {% endfor %}
                 </ul>
             </li>
         </ul>
@@ -60,30 +92,32 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="{% url 'tasklist' %}" method="post">
                         <div class="mb-3">
                             <label for="title" class="col-form-label">
                                 Title:
                             </label>
-                            <input type="text" class="form-control" id="title" required>
+                            <input type="text" id="new-task-title" class="form-control" id="title" required>
                         </div>
                         <div class="mb-3">
                             <label for="description" class="col-form-label" required>
                                 Description
                             </label>
-                            <input type="text" class="form-control" id="description" required>
+                            <input type="text" id="new-task-description" class="form-control" id="description" required>
                         </div>
+                        <!-- Due date field: not implemented in models.
                         <div class="mb-3">
                             <label for="due-date" class="col-form-label">
                                 Due date (optional):
                             </label>
-                            <input type="text" class="form-control" id="due-date">
+                            <input type="date" class="form-control" id="due-date">
                         </div>
+                        -->
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn dodoer-btn dodoer-background">Add task</button>
+                    <button type="button" id="submit-task" onclick="addTask()" class="btn dodoer-btn dodoer-background" data-bs-dismiss="modal">Add task</button>
                 </div>
             </div>
         </div>

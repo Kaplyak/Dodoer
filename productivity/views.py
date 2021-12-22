@@ -89,8 +89,22 @@ def timer(request):
 
 @login_required
 def tasklist(request):
+    
+    ideas_tasks = Task.objects.filter(owner=request.user, state="Ideas")
+    todo_tasks = Task.objects.filter(owner=request.user, state="To do")
+    doing_tasks = Task.objects.filter(owner=request.user, state="Doing")
+    done_tasks = Task.objects.filter(owner=request.user, state="Done")
+
+
+
+
+
     return render(request, "productivity/tasklist.html", {
         "username": request.user.username,
+        "ideas_tasks": ideas_tasks,
+        "todo_tasks": todo_tasks,
+        "doing_tasks": doing_tasks,
+        "done_tasks": done_tasks
     })
 
 def faq(request):
@@ -98,8 +112,17 @@ def faq(request):
         "username": request.user.username
     })
 
+@csrf_exempt
 def tasks(request):
-    return Hello
+    data = json.loads(request.body)
+    if request.method == "POST":
+        title = data.get("title", "")
+        description = data.get("description", "")
+
+
+        newTask = Task.objects.create(owner=request.user, title=title, description=description, state="Ideas")
+        newTask.save()
+        return HttpResponse(status=204)
 
 def addtask(request):
     return Hello
