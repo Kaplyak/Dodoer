@@ -11,7 +11,7 @@
                 <div class="drag-options" id="options1"></div>
                 <ul class="drag-inner-list" id="1">
                     {% for task in ideas_tasks %}
-                        <li class="drag-item">
+                        <li id="{{ task.id }}" class="drag-item">
                             <div class="task-title">
                                 <p>{{ task.title }}</p>
                             </div>
@@ -29,7 +29,7 @@
                 <div class="drag-options" id="options2"></div>
                 <ul class="drag-inner-list" id="2">
                     {% for task in todo_tasks %}
-                        <li class="drag-item">
+                        <li id="{{ task.id }}" class="drag-item">
                             <div class="task-title">
                                 <p>{{ task.title }}</p>
                             </div>
@@ -47,7 +47,7 @@
                 <div class="drag-options" id="options3"></div>
                 <ul class="drag-inner-list" id="3">
                     {% for task in doing_tasks %}
-                        <li class="drag-item">
+                        <li id="{{ task.id }}" class="drag-item">
                             <div class="task-title">
                                 <p>{{ task.title }}</p>
                             </div>
@@ -65,7 +65,7 @@
                 <div class="drag-options" id="options4"></div>
                 <ul class="drag-inner-list" id="4">
                     {% for task in done_tasks %}
-                        <li class="drag-item">
+                        <li id="{{ task.id }}" class="drag-item">
                             <div class="task-title">
                                 <p>{{ task.title }}</p>
                             </div>

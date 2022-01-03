@@ -7,7 +7,7 @@
                 <div class="d-sm-flex justify-content-around">
                     <div class="text-center">
                         <h1>{{ profile.user }}</h1>
-                        <img src="{{ media 'profile.profile_picture' }}" alt="{{ profile.user }} profile picture"></img>
+                        <img id="profile-picture" src="{{ 'media/default_profile_picture.png' }}" alt="{{ profile.user }} profile picture"></img>
                         <p>{{ profile.quote }}</p>
                         <a href="{% url 'register' %}">
                             <button class="btn btn-lg dodoer-background dodoer-btn">Edit profile</button>
@@ -33,5 +33,3 @@
         </section>
     </div>
 {% endblock %}
-
-{% static 'productivity/img/dodoer-logo-3.svg' %}

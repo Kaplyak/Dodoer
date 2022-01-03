@@ -90,10 +90,10 @@ def timer(request):
 @login_required
 def tasklist(request):
     
-    ideas_tasks = Task.objects.filter(owner=request.user, state="Ideas")
-    todo_tasks = Task.objects.filter(owner=request.user, state="To do")
-    doing_tasks = Task.objects.filter(owner=request.user, state="Doing")
-    done_tasks = Task.objects.filter(owner=request.user, state="Done")
+    ideas_tasks = Task.objects.filter(owner=request.user, state="ideas")
+    todo_tasks = Task.objects.filter(owner=request.user, state="todo")
+    doing_tasks = Task.objects.filter(owner=request.user, state="doing")
+    done_tasks = Task.objects.filter(owner=request.user, state="done")
 
 
 
@@ -120,12 +120,21 @@ def tasks(request):
         description = data.get("description", "")
 
 
-        newTask = Task.objects.create(owner=request.user, title=title, description=description, state="Ideas")
+        newTask = Task.objects.create(owner=request.user, title=title, description=description, state="ideas")
         newTask.save()
         return HttpResponse(status=204)
 
+    if request.method == "PUT":
+        data = json.loads(request.body)
+        task_id = data.get("id")
+        new_state = data.get("state")
+        print(task_id)
+        updatedTask = Task.objects.filter(id=task_id).update(state=new_state)
+        print("after error?")
+        return HttpResponse(status=200)
+
 def addtask(request):
-    return Hello
+    return render(request, "productivity/tasklist.html")
 
 def removetask(request):
     return Hello

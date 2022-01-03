@@ -163,9 +163,18 @@ document.addEventListener('DOMContentLoaded', function() {
               })
         }
 
-
-
-
+        // Move task function.
+        function moveTask(id, newState) {
+            console.log("before fetch")
+            fetch('/tasks', {
+                method: 'PUT',
+                body: JSON.stringify({
+                    id: id,
+                    state: newState
+                })
+            })
+            console.log("fetched")
+        }
 
 
         // Drag and drop
@@ -183,6 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .on('dragend', function(el) {
             let parentId = el.parentNode.id;
+            let newState = '';
             console.log(parentId);
             if (parentId == '1') {
                 newState = 'ideas'
@@ -193,15 +203,13 @@ document.addEventListener('DOMContentLoaded', function() {
             } else if (parentId == '4') {
                 newState = 'done'
             }
+
+            let taskId = el.id;
+            console.log('drag ended')
             
             // fetch put element, to change 'state' on database. For example, from 'state: ideas' to 'state: to do'
-            fetch(`/movetask/${id}`, {
-                method: 'PUT',
-                body: JSON.stringify({
-                    state: ''
-                })
-            })
-            
+            moveTask(taskId, newState);
+
             // remove 'is-moving' class from element after dragging has stopped
             el.classList.remove('is-moving');
             

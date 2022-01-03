@@ -3,7 +3,8 @@
 
 {% block body %}
     {% if message %}
-        <div>{{ message }}</div>
+        <p id="message">{{ message }}</p>
+        <hr id="message-bar">
     {% endif %}
 
     <div class="d-flex align-items-center">

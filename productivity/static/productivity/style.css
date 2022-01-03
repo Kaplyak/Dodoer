@@ -65,6 +65,14 @@ body{
     border: 1px solid #000;
 }
 
+#message {
+    margin-left: auto;
+    margin-right: auto;
+    color: #FCB76F;
+    font-size: 2em;
+    margin-top: 10px;
+}
+
 #timer {
     color: #FCB76F;
     font-size: 100px;
@@ -156,7 +164,7 @@ ul {
     padding-top: 10px;
     margin: 10px;
     min-height: 100px;
-    background: #BDE7FB;
+    background: #fcb76f;
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
@@ -165,6 +173,11 @@ ul {
 .task-title {
     font-size: 20px;
     font-weight: bold;
+    color: #bde7fb;
+}
+
+.task-description {
+    color: #bde7fb;
 }
 
 .drag-item.is-moving {
