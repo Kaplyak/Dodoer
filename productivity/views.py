@@ -72,14 +72,24 @@ def register(request):
 
 @login_required
 def profile(request):
-    profile = Profile.objects.get(user=request.user)
+    if request.method == "POST":
+        print("Hello")
+        print(request.FILES["picture"])
+        print("Hello")
+        new_profile_picture = request.FILES["picture"]
+        Profile.objects.filter(user=request.user).update(profile_picture=new_profile_picture)
 
-    return render(request, "productivity/profile.html", {
-        "username": request.user.username,
-        "profile": profile,
-        "productive_time": int((profile.productive_time / 60)),
-        "break_time": int((profile.break_time / 60))
-    })
+        return HttpResponseRedirect(reverse("profile"))
+    
+    else:
+        profile = Profile.objects.get(user=request.user)
+
+        return render(request, "productivity/profile.html", {
+            "username": request.user.username,
+            "profile": profile,
+            "productive_time": int((profile.productive_time / 60)),
+            "break_time": int((profile.break_time / 60))
+        })
 
 @login_required
 def timer(request):
@@ -94,10 +104,6 @@ def tasklist(request):
     todo_tasks = Task.objects.filter(owner=request.user, state="todo")
     doing_tasks = Task.objects.filter(owner=request.user, state="doing")
     done_tasks = Task.objects.filter(owner=request.user, state="done")
-
-
-
-
 
     return render(request, "productivity/tasklist.html", {
         "username": request.user.username,
@@ -119,7 +125,6 @@ def tasks(request):
         title = data.get("title", "")
         description = data.get("description", "")
 
-
         newTask = Task.objects.create(owner=request.user, title=title, description=description, state="ideas")
         newTask.save()
         return HttpResponse(status=204)
@@ -128,9 +133,9 @@ def tasks(request):
         data = json.loads(request.body)
         task_id = data.get("id")
         new_state = data.get("state")
-        print(task_id)
+
+        # updatedTask is not a needed variable ?
         updatedTask = Task.objects.filter(id=task_id).update(state=new_state)
-        print("after error?")
         return HttpResponse(status=200)
 
 def addtask(request):

@@ -15,7 +15,7 @@ class Task(models.Model):
 
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    profile_picture = models.ImageField(default='static/productivity/img/default_profile.svg')
+    profile_picture = models.ImageField(upload_to="static/profilepics/", default='default_profile.svg')
     quote = models.CharField(max_length=2048)
     productive_time = models.IntegerField(default=0)
     break_time = models.IntegerField(default=0)

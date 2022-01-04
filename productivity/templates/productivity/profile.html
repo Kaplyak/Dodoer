@@ -7,11 +7,14 @@
                 <div class="d-sm-flex justify-content-around">
                     <div class="text-center">
                         <h1>{{ profile.user }}</h1>
-                        <img id="profile-picture" src="{{ 'media/default_profile_picture.png' }}" alt="{{ profile.user }} profile picture"></img>
+                        <img id="profile-picture" src="static/profilepics/{{ profile.profile_picture }}" alt="{{ profile.user }} profile picture"></img>
                         <p>{{ profile.quote }}</p>
-                        <a href="{% url 'register' %}">
-                            <button class="btn btn-lg dodoer-background dodoer-btn">Edit profile</button>
-                        </a>
+                        <form enctype="multipart/form-data" method="post" action="{% url 'profile' %}">
+                            {% csrf_token %}
+                            <input type="file" name="picture" required>
+                            <input type="submit" class="btn btn-lg dodoer-background dodoer-btn" value="Edit profile picture" />
+                        </form>
+                            
                     </div>
                     <div>
                         <canvas id="productivity_chart" width="350" height="350"></canvas>
