@@ -2,10 +2,6 @@
 {% load static %}
 
 {% block body %}
-    {% if message %}
-        <p id="message">{{ message }}</p>
-        <hr id="message-bar">
-    {% endif %}
 
     <div class="d-flex align-items-center">
         <div class="log-container">
@@ -14,6 +10,10 @@
                     <img src="{% static 'productivity/img/dodoer-logo.svg' %}" alt="" width="240" height="80">
                 </a>
             </div>
+            {% if message %}
+                <p id="message">{{ message }}</p>
+                <hr id="message-bar">
+            {% endif %}
             <div class="outerform my-3">
                 <div class="formwhitespace p-5">
                     <form action="{% url 'login' %}" method="post">
